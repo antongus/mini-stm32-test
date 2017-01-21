@@ -57,4 +57,18 @@ using ConsoleUart = STM32::UART::Uart<ConsoleUartProps>;
 /// Console (debug) UART variable declaration
 extern ConsoleUart uart;
 
+#include "stepper.h"
+
+struct StepperProps
+{
+	using Pin1 = Pin<'B', 3>;
+	using Pin2 = Pin<'B', 4>;
+	using Pin3 = Pin<'B', 5>;
+	using Pin4 = Pin<'B', 6>;
+};
+
+using StepperType = Stepper<StepperProps>;
+extern StepperType stepper;
+
+
 #endif // HW_H_INCLUDED

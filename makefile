@@ -119,6 +119,7 @@ endif
 	DIRS	+= $(SRCDIR)/startup
 	DIRS	+= $(SRCDIR)/startup/$(CHIP)
 	DIRS	+= $(SRCDIR)/terminal
+	DIRS	+= $(SRCDIR)/adc
 
 	DIRS	+= $(LIBDIR)
 	DIRS	+= $(LIBDIR)/CMSIS

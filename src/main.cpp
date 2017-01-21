@@ -8,6 +8,7 @@
 
 #include "processes.h"
 #include "hw.h"
+#include "adc12.h"
 
 Process1 process1;
 StatusLedProcess statusLedProcess;
@@ -27,10 +28,25 @@ namespace OS
 	{
 		OS::sleep(1);  // allow all other processes enter to wait
 
+		adc.Init();
 		startEvent.signal();
 
 		for (;;)
 		{
+//			BoardPins::LedPin::On();
+			for (auto i = 0; i < 500; ++i)
+			{
+				stepper.StepUp();
+				OS::sleep(2);
+			}
+			OS::sleep(1000);
+
+//			BoardPins::LedPin::Off();
+			for (auto i = 0; i < 500; ++i)
+			{
+				stepper.StepDown();
+				OS::sleep(2);
+			}
 			OS::sleep(1000);
 		}
 	}

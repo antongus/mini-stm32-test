@@ -10,6 +10,8 @@
 
 ConsoleUart uart;
 
+StepperType stepper;
+
 OS_INTERRUPT void USART1_IRQHandler()
 {
 	OS::TISRW ISR;
