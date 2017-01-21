@@ -11,6 +11,7 @@
 #include "commands.h"
 #include "vars.h"
 #include "util.h"
+#include "adc12.h"
 
 INTERPRETER_COMMAND(TEST2)
 {
@@ -21,5 +22,17 @@ INTERPRETER_COMMAND(TEST2)
 INTERPRETER_COMMAND(RESET)
 {
 	NVIC_SystemReset();
+	return true;
+}
+
+INTERPRETER_COMMAND(ADCTEST)
+{
+	for(;;)
+	{
+		stream << adc.Get(0) << '\t' << adc.Get(1) << "\r\n";
+		if (stream.GetChar(100) != -1)
+			break;
+
+	}
 	return true;
 }
